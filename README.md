@@ -1,0 +1,2 @@
+# laborator2
+soft
