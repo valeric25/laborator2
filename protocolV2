@@ -1,0 +1,50 @@
+==============================================
+        client => mediator
+==============================================
+{
+    protocol: "client"
+    type: [get | post]
+    sort: [asc | desc]
+    filter: "Any string"
+    groupBy: [FI121 | FI131]
+}
+
+
+{
+    protocol: "client"
+    type: [get | post]
+    response: []
+}
+
+==============================================
+        mediator => nodes
+==============================================
+{
+    protocol: "mediator"
+}
+
+
+{
+    protocol: 'mediator'
+    type: 'post'
+    response: []
+}
+
+
+
+==============================================
+        node => node
+==============================================
+Ask node for info
+{
+    protocol: "node"
+    type: "get"
+    filter: "adrian" - > nume
+}
+
+{
+    protocol: "node"
+    type: "post"
+    response: []
+}
+
