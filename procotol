@@ -1,0 +1,108 @@
+info
+============================================
+               9002 | -------- 9001
+             /      | \
+            /       |  \
+        9003        |   \              * 9006       [mediator]
+            \       |    \
+             \      |     \
+               9004 |      \ 9005
+
+============================================
+Client 8500
+Mediator 9000
+
+node node.js 9006  0          1 2
+node node.js 9002  0          1 2
+node node.js 9001  9002       2 4
+node node.js 9005  9002       4 7
+node node.js 9004  9002       7 12
+node node.js 9003  9002,9004 12 18
+
+============================================
+Dependent injection
+
+
+
+========================================
+client => mediator
+=======================================
+{
+    protocol: "client | node"
+    type: "get"
+    sort: "asc | desc"
+    filter: "Adrian"
+    groupBy: "FI-121"
+}
+
+mediator => client
+{
+    protocol: "client | node"
+    type: "post"
+    response: {}
+}
+
+
+
+
+
+
+==============================
+mediator => nodes
+==============================
+
+{
+    protocol: "client | node"
+    type: "get"
+    method: "nrOfNodes"
+}
+
+{
+    protocol: "client | node"
+    type: "get"
+    filter: "Ceva"
+}
+
+==============================
+mediator <= node
+==============================
+{
+     protocol: "node"
+     type: "post"
+     connection: "12"
+}
+
+{
+   protocol: "node"
+     type: "post"
+     response: {}
+}
+
+
+
+
+==============================
+node => node
+==============================
+{
+    protocol: "node | subnode"
+    type: "get"
+    filter: "adrian" - > nume
+}
+
+{
+    protocol: "node"
+    type: "post"
+    response: []
+}
+
+
+
+=============================
+
+{
+    protocol: "client | node"
+    type: "post"
+    connections: Int
+}
+
